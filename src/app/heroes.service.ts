@@ -27,14 +27,15 @@ export class HeroesService {
   }
 
   getHeroes (nameStartsWith?: string, page?: number) {
-    console.log("TEAMS");
-    console.log(Array.from(this.teams));
+    //console.log("TEAMS");
+    //console.log(Array.from(this.teams));
     if (page || page === 0) {
       this.page = page;
     }
     const url = this.protocol + this.ApiUrl + 'characters?apikey=56d2cc44b1c84eb7c6c9673565a9eb4b'
     + '&offset=' + (this.page * this.step)
     + (nameStartsWith ? ('&nameStartsWith=' + nameStartsWith) : '');
+    //http://localhost:3010/results?name_like=spider&_page=1
     this.http.get<any>(url).subscribe((data) => {
       this.heroes = [];
       this.total = Math.ceil(data.data.total / this.step);

@@ -1,0 +1,88 @@
+.teclado{
+    height: auto;
+    overflow: hidden;
+    font-family: "open_bold";
+    font-size: 1.3em;
+  }
+  .teclado div{
+    display: inline-block;
+    width: 30%;
+    height: 2.7em;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(253, 253, 253, 0.98);
+    color: #666666;
+    margin: 1px 1px -5px 1px;
+    line-height: 3em;
+  }
+  .teclado div:nth-child(1){
+     border-top-left-radius: 6px;
+  }
+  .teclado div:nth-child(3) {
+     border-top-right-radius: 6px;
+  }
+  .teclado div:nth-child(7){
+    border-bottom-left-radius: 6px;
+  }
+  .teclado div:nth-child(9)  {
+    border-bottom-right-radius: 6px;
+  }
+  .teclado div:nth-child(10){
+    border-bottom-left-radius: 6px;
+    background-color: #EEEE;
+  }
+  .teclado div:nth-child(12){
+     border-bottom-right-radius: 6px;
+     background-color: #EEEE;
+  }
+  .teclado div:active{
+    background: #DDDDDD;
+  }
+  
+  .grid-layout {
+    display: flex;
+  }
+  
+  .grid-item {
+    flex: 1;
+  }
+  /* Movement*/
+  .moveB {
+      position: absolute;
+      bottom:0;
+  
+  }
+  .moveMe { 
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+  }
+  .icon-bech{
+    height:25px;
+    width:25px;
+  }
+  /* Delete icon*/
+  .delete_icon{
+    line-height: 1.8em;
+    font-size: 1.2em;
+  }
+  
+  @media (max-width: 768px){
+    .moveMe {
+      /*left:8%;*/
+    }
+  } 
+  
+  @media (min-width: 770px){
+    .moveMe {
+      left:33%;
+    }
+  }
+  
+  @media (min-device-width : 360px) 
+  and (max-device-width : 370px) { 
+    .teclado{
+    font-size: 1em;
+    }
+  }
+  

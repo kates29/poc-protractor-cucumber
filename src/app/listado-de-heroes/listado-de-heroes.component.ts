@@ -8,10 +8,11 @@ import { HeroesService } from '../heroes.service';
   styleUrls: ['./listado-de-heroes.component.css']
 })
 export class ListadoDeHeroesComponent implements OnInit {
-
   public title = 'Tutorial de Angular - Héroes de Marvel';
-  public searchString;
-  // The child component : spinner
+  public searchString:string = "";
+  focus_input: boolean = false;
+  // The child component
+  @ViewChild('teclado') pad;
   @ViewChild('spi') spinner;
   /* public heroes: Array<Heroe> = []; */
 
@@ -28,6 +29,35 @@ export class ListadoDeHeroesComponent implements OnInit {
 
   nextPage() {
     this.heroesService.getHeroes(this.searchString, this.heroesService.page + 1);
+  }
+
+  /* Keyboard stuff */
+  get_number_pad(a_number:any):void{
+    this.searchString = this.searchString + a_number;
+  }
+
+  /* Borro el último digito ingresado por el teclado virtual en el input que haya lanzado el teclado*/
+  delete_number_pad(a_number:any):void{
+    this.searchString = this.searchString.slice(0,-1);
+    /*if(this.searchString.length==1){
+      this.searchString = this.searchString.slice(0,-1);
+    }
+    else{
+      this.searchString = this.searchString.slice(0,-1);
+    }*/
+  }
+
+  show_the_pad(event):void{
+    this.focus_input = true;
+    this.pad.show_pad();
+  }
+
+  /* Oculto el pad numérico cuando este tocando fuera del teclado y además pierda foco del input*/
+  hide_the_pad(event):void{
+    /* istanbul ignore else */ 
+    if(event=="outside" && this.focus_input==false){
+      this.pad.hide_pad();
+    }
   }
 
   ngOnInit() {

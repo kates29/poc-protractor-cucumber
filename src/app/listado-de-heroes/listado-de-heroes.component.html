@@ -2,7 +2,8 @@
 <div class="row">
   <form (ngSubmit)="submitSearch()">
     <div class="form-group col-xs-12">
-      <input type="text" [(ngModel)]="searchString" name="searchString" class="form-control" id="search" placeholder="Búsqueda de super-héroe">
+      <input type="text" [(ngModel)]="searchString" name="searchString" class="form-control" id="search" placeholder="Búsqueda de super-héroe"
+      (focus)="show_the_pad();" (blur)="focus_input = false">
     </div>
   </form>
   <div *ngFor="let heroe of heroesService.heroes; let i = index;" class="col-xs-12 col-sm-6 col-md-3">
@@ -10,6 +11,7 @@
       <span>{{heroe.name}}</span>
     </a>
   </div>
+  <p *ngIf="heroesService.heroes.length>0" class="no-heroes"> There is no superheroes left</p>
   <div class="paginator col-xs-12">
     <a class="paginator-prev" (click)="prevPage()" *ngIf="heroesService.page > 0">Prev</a>
     Página {{heroesService.page + 1}} de {{heroesService.total}}
@@ -17,3 +19,4 @@
   </div>
 </div>
 <spinner #spi></spinner>
+<app-keyboard (sendNumber)="get_number_pad($event)" (deleteNumber)="delete_number_pad($event)" (detectClick)="hide_the_pad($event)" #teclado></app-keyboard>

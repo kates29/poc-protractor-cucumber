@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,7 @@ import { HeroesService } from './heroes.service';
 import { HeroProfileComponent } from './hero-profile/hero-profile.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ModalPollComponent } from './modal-poll/modal-poll.component';
+import { KeyboardComponent } from './keyboard/keyboard.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { ModalPollComponent } from './modal-poll/modal-poll.component';
     ListadoDeHeroesComponent,
     HeroProfileComponent,
     SpinnerComponent,
-    ModalPollComponent
+    ModalPollComponent,
+    KeyboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [HeroesService],
   bootstrap: [AppComponent]
